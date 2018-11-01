@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <dimen name="fab_margin">16dp</dimen>
+    <dimen name="dimen_8x">8dp</dimen>
+    <dimen name="dimen_16x">16dp</dimen>
+    <dimen name="dimen_32x">32dp</dimen>
+    <dimen name="dimen_64x">64dp</dimen>
+    <dimen name="dimen_96x">96dp</dimen>
+
+    <dimen name="activity_padding_horizontal">16dp</dimen>
+    <dimen name="padd_10">10dp</dimen>
+    <dimen name="ic_delete">30dp</dimen>
+    <dimen name="thumbnail">90dp</dimen>
+</resources>

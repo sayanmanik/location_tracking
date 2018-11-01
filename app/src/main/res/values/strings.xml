@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">LocationTracking</string>
+    <string name="title_activity_maps">Map</string>
+    <string name="action_settings">Settings</string>
+    <string name="toolbar_title">Contacts</string>
+    <string name="action_search">Search</string>
+    <string name="search_hint">Type name…</string>
+    <string name="saved_list">
+        <u>Saved List</u>.
+    </string>
+    <string name="empty_string">No Entry.Please make some entries</string>
+</resources>

@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:padding="5dp">
+
+    <CheckBox
+        android:visibility="gone"
+        android:id="@+id/check"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        />
+
+    <ImageView
+        android:src="@drawable/ic_icontacts"
+        android:layout_width="56dp"
+        android:layout_height="56dp"
+        android:id="@+id/img_contact"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginLeft="16dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_weight="3"
+            android:textStyle="bold"
+            android:text="Contact Name"
+            android:id="@+id/name_contact"/>
+        <TextView
+
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:text="Phone Number here"
+            android:id="@+id/phone_contact"/>
+
+    </LinearLayout>
+
+
+    </LinearLayout>
