@@ -9,4 +9,35 @@
         <u>Saved List</u>.
     </string>
     <string name="empty_string">No Entry.Please make some entries</string>
+    <string name="facebook_app_id">[APP_ID]</string>
+    <string name="fb_login_protocol_scheme">fb[APP_ID]</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="signUp">SIGN UP</string>
+    <string name="fullName">Full Name</string>
+    <string name="email">Email Id</string>
+    <string name="mobileNumber">Mobile Number</string>
+    <string name="location">Location</string>
+    <string name="passowrd">Password</string>
+    <string name="confirmPassword">Confirm Password</string>
+    <string name="terms_conditions">By clicking SignUp you agree all the Terms and Conditions.</string>
+    <string name="already_user">Already have Account? Login here.</string>
+    <string name="forgot">Forgot password?</string>
+    <string name="login">LOGIN</string>
+    <string name="show_pwd">Show Password</string>
+    <string name="hide_pwd">Hide Password</string>
+    <string name="back">BACK</string>
+    <string name="submit">SUBMIT</string>
+    <string name="registered_emailid">Please enter your Registered Email Id below:</string>
+    <string name="newUser">Not a Member yet? Sign Up here.</string>
+    <string name="title_activity_new_map">Map</string>
+    <string name="title_activity_map_new">MapNewActivity</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="nav_header_title">Android Studio</string>
+    <string name="nav_header_subtitle">android.studio@android.com</string>
+    <string name="nav_header_desc">Navigation header</string>
+    <string name="google_map_key">AIzaSyAVz4e7EajvDQlyrwW9mM4CqnJArRGr6Dg</string>
+
 </resources>

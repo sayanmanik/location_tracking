@@ -27,6 +27,7 @@ import static android.view.View.GONE;
 /**
  * Created by 1605476 and 16-Sep-18
  **/
+
 public class ListAdapter extends RecyclerView.Adapter<ListAdapter.MyViewHolder> implements Filterable
 {
     int pos;
@@ -41,7 +42,7 @@ public class ListAdapter extends RecyclerView.Adapter<ListAdapter.MyViewHolder> 
         this.ctx = c;
         this.persondetails = persondetails;
         this.listFiltered = persondetails;
-        details=new ArrayList<Persondetails>();
+        details=new ArrayList<>();
 
     }
 
@@ -79,7 +80,8 @@ public class ListAdapter extends RecyclerView.Adapter<ListAdapter.MyViewHolder> 
             {
                 Log.d("TAG1", "Long Pressed");
 
-                if(persondetails.get(position).getVisiblity()==GONE&&persondetails.get(position).getChecked()==false) {
+                if(persondetails.get(position).getVisiblity()==GONE&&persondetails.get(position).getChecked()==false)
+                {
                     holder.checkBox.setVisibility(View.VISIBLE);
                     holder.checkBox.setChecked(true);
 
@@ -92,10 +94,12 @@ public class ListAdapter extends RecyclerView.Adapter<ListAdapter.MyViewHolder> 
                 {
                     holder.checkBox.setVisibility(View.GONE);
                     holder.checkBox.setChecked(false);
+
                     persondetails.get(position).setVisibility(View.GONE);
                     persondetails.get(position).setChecked(false);
                     details.remove(persondetails.get(position));
                 }
+
                 /*holder.checkBox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
                     @Override
                     public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {

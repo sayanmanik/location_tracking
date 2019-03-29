@@ -41,6 +41,4 @@
             android:id="@+id/phone_contact"/>
 
     </LinearLayout>
-
-
     </LinearLayout>

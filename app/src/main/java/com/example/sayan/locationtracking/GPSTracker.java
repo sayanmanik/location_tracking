@@ -12,11 +12,17 @@ import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
 import android.os.Bundle;
+import android.os.Handler;
 import android.os.IBinder;
+import android.os.SystemClock;
 import android.provider.Settings;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 import android.util.Log;
+
+import com.example.sayan.locationtracking.Fragment.MapFragment.MyMapFragment;
+import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.Marker;
 
 /**
  * Created by 1605476 and 20-Aug-18
@@ -44,15 +50,21 @@ public class GPSTracker extends Service implements LocationListener {
     // Declaring a Location Manager
     protected LocationManager locationManager;
 
+    private MyMapFragment mapFragment;
+
     Activity activity;
 
-    public GPSTracker() {
+    public GPSTracker()
+    {
+
     }
 
     public GPSTracker(Context context, Activity activity)
     {
         this.mContext = context;
         this.activity = activity;
+        mapFragment= new MyMapFragment();
+
         getLocation();
     }
 
@@ -78,7 +90,8 @@ public class GPSTracker extends Service implements LocationListener {
                 if (isNetworkEnabled)
                 {
                     int requestPermissionsCode = 50;
-                    if (ContextCompat.checkSelfPermission(activity, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(activity, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+                    if (ContextCompat.checkSelfPermission(activity, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(activity, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED)
+                    {
                         ActivityCompat.requestPermissions(activity, new String[]{Manifest.permission.ACCESS_FINE_LOCATION}, requestPermissionsCode);
 
                     } else
@@ -221,8 +234,64 @@ public class GPSTracker extends Service implements LocationListener {
         alertDialog.show();
     }
 
+
+
+    public void moveVehicle(final Marker marker, final Location finalPosition)
+    {
+        final LatLng startPosition = marker.getPosition();
+        final Handler handler=new Handler();
+        final long start= SystemClock.uptimeMillis();
+        final long durationInMilis=300;
+        final boolean hideMarker=false;
+
+        handler.post(new Runnable() {
+            long elapsed;
+            long t;
+            @Override
+            public void run()
+            {
+                elapsed=SystemClock.uptimeMillis()-start;
+                t=elapsed/durationInMilis;
+
+                LatLng latLng=new LatLng(startPosition.latitude*(1-t)+finalPosition.getLatitude()*t
+                        ,startPosition.longitude*(1-t)+finalPosition.getLongitude()*t);
+
+                marker.setPosition(latLng);
+
+                if(t<1)
+                {
+                    handler.postDelayed(this,16);
+                }
+                else
+                {
+                    if(hideMarker)
+                    {
+                        marker.setVisible(false);
+
+                    }
+                    else
+                    {
+                        marker.setVisible(true);
+                    }
+                }
+
+            }
+        });
+    }
+
+
     @Override
-    public void onLocationChanged(Location location) {
+    public void onLocationChanged(Location location)
+    {
+       /* float bestAccuracy = -1f;
+        if (location.getAccuracy() != 0.0f
+                && (location.getAccuracy() < bestAccuracy) || bestAccuracy == -1f)
+        {
+            locationManager.removeUpdates(this);
+        }
+        bestAccuracy = location.getAccuracy();*/
+
+        mapFragment.moveVehicle(location);
     }
 
     @Override
