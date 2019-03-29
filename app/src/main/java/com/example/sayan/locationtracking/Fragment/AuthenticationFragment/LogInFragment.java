@@ -39,6 +39,7 @@ public class LogInFragment extends Fragment implements View.OnClickListener
     private  View view;
     private boolean isEnabled = false;
 
+    private EmailAuthenticate emailAuthenticate;
     private  EditText emailid, password;
     private  Button loginButton;
     private  TextView forgotPassword, signUp;
@@ -72,6 +73,8 @@ public class LogInFragment extends Fragment implements View.OnClickListener
         show_hide_password = (CheckBox) view
                 .findViewById(R.id.show_hide_password);
         loginLayout = (LinearLayout) view.findViewById(R.id.login_layout);
+
+        emailAuthenticate = new EmailAuthenticate();
 
       //  loginButton.setEnabled(isEnabled); //at first button is disabled
 
@@ -144,8 +147,8 @@ public class LogInFragment extends Fragment implements View.OnClickListener
                 }
                 checkValidation();
 
-                FirebaseUser currentUser = FirebaseAuth.getInstance().getCurrentUser();
-                updateUI(currentUser);
+                //FirebaseUser currentUser = FirebaseAuth.getInstance().getCurrentUser();
+                //updateUI(currentUser);
 
                 break;
 
@@ -199,15 +202,17 @@ public class LogInFragment extends Fragment implements View.OnClickListener
 
           //  loginButton.setEnabled(true);
             new EmailAuthenticate().signInUser(getEmailId, getPassword);
+
         }
     }
 
 
-    private void updateUI(FirebaseUser user)
+   /* private void updateUI()
     {
         Intent intent=new Intent(getActivity(), MapNewActivity.class);
         //intent.putExtra("UserName",user.toString());
         startActivity(intent);
     }
+    */
 
 }

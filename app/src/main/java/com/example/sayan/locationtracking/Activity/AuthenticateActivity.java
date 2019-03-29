@@ -6,14 +6,13 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 
-import com.example.sayan.locationtracking.Authentication.EmailAuthenticate;
 import com.example.sayan.locationtracking.Fragment.AuthenticationFragment.LogInFragment;
 import com.example.sayan.locationtracking.Fragment.AuthenticationFragment.SignUpFragment;
 import com.example.sayan.locationtracking.R;
 
 public class AuthenticateActivity extends AppCompatActivity
 {
-    EmailAuthenticate emailAuthenticate;
+
 
     private Intent intent;
 
@@ -30,7 +29,7 @@ public class AuthenticateActivity extends AppCompatActivity
          **/
 
         intent=getIntent();
-        emailAuthenticate=new EmailAuthenticate();
+
 
         FragmentManager manager = getSupportFragmentManager();
         FragmentTransaction transaction = manager.beginTransaction();

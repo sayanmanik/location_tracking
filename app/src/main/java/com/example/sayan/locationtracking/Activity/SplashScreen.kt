@@ -15,7 +15,6 @@ import com.example.sayan.locationtracking.GPSTracker
 import android.view.View.INVISIBLE
 import android.view.View.VISIBLE
 import android.view.animation.AnimationUtils
-import android.view.animation.Animation
 import android.widget.ImageView
 import com.example.sayan.locationtracking.R
 import com.google.firebase.auth.FirebaseAuth
@@ -23,16 +22,16 @@ import com.smarteist.autoimageslider.SliderLayout
 import com.smarteist.autoimageslider.SliderView
 
 import java.util.*
-import kotlin.math.sign
-
 
 class SplashScreen : AppCompatActivity(), View.OnClickListener
 {
+
     private lateinit var signUpBtn: Button
     private lateinit var logInBtn:Button
     private lateinit var sliderLayout: SliderLayout
 
-    companion object {
+    companion object
+    {
         val TAG1 = "TAG1"
         val TAG2 = "TAG2"
     }

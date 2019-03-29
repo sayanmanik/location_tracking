@@ -6,9 +6,11 @@ import android.content.res.ColorStateList;
 import android.content.res.XmlResourceParser;
 import android.net.Uri;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -19,6 +21,9 @@ import android.widget.Toast;
 import com.example.sayan.locationtracking.R;
 import com.example.sayan.locationtracking.ToastForInputValidation.CustomToast;
 import com.example.sayan.locationtracking.UtilityStringClass.Utils;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.FirebaseAuth;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -30,6 +35,8 @@ public class ForgotPasswordFragment extends Fragment implements View.OnClickList
 
     private static EditText emailId;
     private static TextView submit, back;
+
+    private static String TAG = "TAG";
 
     public ForgotPasswordFragment()
     {
@@ -49,7 +56,7 @@ public class ForgotPasswordFragment extends Fragment implements View.OnClickList
     // Initialize the views
     private void initViews() {
         emailId = (EditText) view.findViewById(R.id.registered_emailid);
-        submit = (TextView) view.findViewById(R.id.forgot_button);
+        submit = (TextView) view.findViewById(R.id.send_button);
         back = (TextView) view.findViewById(R.id.backToLoginBtn);
 
         // Setting text selector over textviews
@@ -88,7 +95,7 @@ public class ForgotPasswordFragment extends Fragment implements View.OnClickList
 
                 break;
 
-            case R.id.forgot_button:
+            case R.id.send_button:
 
                 // Call Submit button task
                 submitButtonTask();
@@ -120,7 +127,32 @@ public class ForgotPasswordFragment extends Fragment implements View.OnClickList
 
             // Else submit email id and fetch passwod or do your stuff
         else
-            Toast.makeText(getActivity(), "Get Forgot Password.",
+           /* Toast.makeText(getActivity(), "Get Forgot Password.",
                     Toast.LENGTH_SHORT).show();
+                    */
+
+           sendEmail(getEmailId);
+    }
+
+    public void sendEmail(String emailAddress)
+    {
+        FirebaseAuth auth = FirebaseAuth.getInstance();
+
+        auth.sendPasswordResetEmail(emailAddress)
+                .addOnCompleteListener(new OnCompleteListener<Void>() {
+                    @Override
+                    public void onComplete(@NonNull Task<Void> task) {
+                        if (task.isSuccessful())
+                        {
+                            Log.v(TAG, "Email sent.");
+                            Toast.makeText(getActivity(),"Email Sent. Check your Email",Toast.LENGTH_LONG)
+                                    .show();
+                        }
+                        else
+                        {
+                            Log.v(TAG, "Not successful");
+                        }
+                    }
+                });
     }
 }

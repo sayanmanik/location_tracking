@@ -1,17 +1,20 @@
 package com.example.sayan.locationtracking.Authentication
 
+import android.content.Intent
 import android.util.Log
 import android.widget.Toast
 import com.example.sayan.locationtracking.Activity.AuthenticateActivity
+import com.example.sayan.locationtracking.Activity.MapNewActivity
 import com.example.sayan.locationtracking.Fragment.AuthenticationFragment.SignUpFragment
 import com.example.sayan.locationtracking.InterFace.Authenticate
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseAuthException
+import com.google.firebase.auth.FirebaseUser
 
 class EmailAuthenticate : Authenticate
 {
 
-    var context= AuthenticateActivity.getInstance()
+    var context= AuthenticateActivity()
 
     val signUpFragment:SignUpFragment= SignUpFragment()
 
@@ -64,8 +67,6 @@ class EmailAuthenticate : Authenticate
 
     fun signInUser(email:String,password: String)     // to sign In existing user
     {
-
-
         auth = FirebaseAuth.getInstance()
 
         auth.signInWithEmailAndPassword(email,password)
@@ -74,21 +75,21 @@ class EmailAuthenticate : Authenticate
                     {
                         val user=auth.currentUser
 
-                       // updateUI(user!!)  // Sign in happened successfully
+                        updateUI(user!!)  // Sign in happened successfully
                     }
                     else
                     {
-                      //  Toast.makeText(context,"Existing user!! New authentication failed",Toast.LENGTH_LONG).show()
+                        // Toast.makeText(context,"Check Password Or Email Again",Toast.LENGTH_LONG).show()
 
                         Log.e("TAG","Error in authentication")
                     }
                 }
     }
 
-   /* private fun updateUI(user:FirebaseUser)
+    private fun updateUI(user: FirebaseUser)
     {
-        val intent=Intent(context,MapsActivity::class.java)
+        val intent= Intent(context, MapNewActivity::class.java)
         intent.putExtra("UserName",user.toString())
         context.startActivity(intent)
-    }*/
+    }
 }
