@@ -28,10 +28,10 @@ import kotlin.math.sign
 
 class SplashScreen : AppCompatActivity(), View.OnClickListener
 {
-
     private lateinit var signUpBtn: Button
     private lateinit var logInBtn:Button
     private lateinit var sliderLayout: SliderLayout
+
     companion object {
         val TAG1 = "TAG1"
         val TAG2 = "TAG2"
