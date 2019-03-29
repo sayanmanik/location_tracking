@@ -3,6 +3,7 @@ package com.example.sayan.locationtracking.Activity
 
 import android.app.SearchManager
 import android.content.Context
+import android.content.Intent
 import android.os.Bundle
 import android.support.design.widget.NavigationView
 import android.support.v4.app.FragmentManager
@@ -17,6 +18,7 @@ import com.example.sayan.locationtracking.Fragment.MapFragment.MyMapFragment
 import com.example.sayan.locationtracking.Fragment.contactListFragment.ContactListFragment
 import com.example.sayan.locationtracking.Fragment.contactListFragment.EmergencyContactsList
 import com.example.sayan.locationtracking.R
+import com.google.firebase.auth.FirebaseAuth
 import kotlinx.android.synthetic.main.activity_map_new.*
 import kotlinx.android.synthetic.main.app_bar_map_new.*
 
@@ -132,8 +134,9 @@ class MapNewActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelec
             }
             R.id.log_out ->
             {
-                
-
+                FirebaseAuth.getInstance().signOut()
+                startActivity(Intent(this,SplashScreen::class.java))
+                finish()
             }
         }
 

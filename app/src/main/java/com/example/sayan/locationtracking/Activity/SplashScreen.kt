@@ -8,6 +8,7 @@ import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 
 import android.content.Intent
+import android.util.Log
 import android.widget.Button
 import com.example.sayan.locationtracking.GPSTracker
 
@@ -17,6 +18,7 @@ import android.view.animation.AnimationUtils
 import android.view.animation.Animation
 import android.widget.ImageView
 import com.example.sayan.locationtracking.R
+import com.google.firebase.auth.FirebaseAuth
 import com.smarteist.autoimageslider.SliderLayout
 import com.smarteist.autoimageslider.SliderView
 
@@ -30,11 +32,26 @@ class SplashScreen : AppCompatActivity(), View.OnClickListener
     private lateinit var signUpBtn: Button
     private lateinit var logInBtn:Button
     private lateinit var sliderLayout: SliderLayout
+    companion object {
+        val TAG1 = "TAG1"
+        val TAG2 = "TAG2"
+    }
 
     override fun onCreate(savedInstanceState: Bundle?)
     {
         super.onCreate(savedInstanceState)
         setContentView(com.example.sayan.locationtracking.R.layout.activity_splash_screen)
+
+
+        var user = FirebaseAuth.getInstance().currentUser
+
+        if (user!=null) {
+
+           Log.v(TAG1,"User logged in")
+        } else {
+            // No user is signed in.
+            Log.v(TAG2,"User not Logged in")
+        }
 
         signUpBtn = findViewById(R.id.signUpBtn)
         logInBtn=findViewById(R.id.logInBtn)
