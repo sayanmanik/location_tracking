@@ -72,7 +72,7 @@ public class SignUpFragment extends Fragment implements View.OnClickListener
         terms_conditions = (CheckBox) view.findViewById(R.id.terms_conditions);
 
      //   signUpButton.setEnabled(false); // initially button is disabled
-        emailAuthenticate = new EmailAuthenticate();
+        emailAuthenticate = new EmailAuthenticate(getActivity());
 
 
        // FirebaseApp.initializeApp(getActivity());

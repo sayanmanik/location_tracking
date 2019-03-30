@@ -12,8 +12,6 @@ import com.example.sayan.locationtracking.R;
 
 public class AuthenticateActivity extends AppCompatActivity
 {
-
-
     private Intent intent;
 
     public static AuthenticateActivity authenticateActivity;

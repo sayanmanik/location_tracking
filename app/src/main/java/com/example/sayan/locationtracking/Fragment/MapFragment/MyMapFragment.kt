@@ -1,6 +1,5 @@
 package com.example  . sayan.locationtracking.Fragment.MapFragment
 
-import android.Manifest
 import android.annotation.SuppressLint
 import android.content.Context.LOCATION_SERVICE
 import android.content.Intent
@@ -76,8 +75,6 @@ class MyMapFragment : Fragment(),OnMapReadyCallback
     override fun onActivityCreated(savedInstanceState: Bundle?)
     {
         super.onActivityCreated(savedInstanceState)
-
-
 
 
         if (activity != null)

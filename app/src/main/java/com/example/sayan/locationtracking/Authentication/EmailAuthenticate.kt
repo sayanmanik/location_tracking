@@ -1,5 +1,7 @@
 package com.example.sayan.locationtracking.Authentication
 
+import android.app.Activity
+import android.content.Context
 import android.content.Intent
 import android.util.Log
 import android.widget.Toast
@@ -11,10 +13,10 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseAuthException
 import com.google.firebase.auth.FirebaseUser
 
-class EmailAuthenticate : Authenticate
+class EmailAuthenticate(val context: Activity) : Authenticate
 {
-
-    var context= AuthenticateActivity()
+    //lateinit var context: AuthenticateActivity
+//    var context= AuthenticateActivity()
 
     val signUpFragment:SignUpFragment= SignUpFragment()
 
@@ -50,9 +52,8 @@ class EmailAuthenticate : Authenticate
 
                           /*    if (currentUser != null) {
                                 updateUI(currentUser)  // Sign in happened successfully
-                            }
-                           // Toast.makeText(context.instance,"Authentication successful",Toast.LENGTH_LONG).show()
-*/
+                            } */
+                            Toast.makeText(context,"Authentication successful",Toast.LENGTH_LONG).show()
                             Log.e("TAG1","Authentication Successful")
 
                         }
@@ -79,7 +80,7 @@ class EmailAuthenticate : Authenticate
                     }
                     else
                     {
-                        // Toast.makeText(context,"Check Password Or Email Again",Toast.LENGTH_LONG).show()
+                        Toast.makeText(context,"Check Password Or Email Again",Toast.LENGTH_LONG).show()
 
                         Log.e("TAG","Error in authentication")
                     }

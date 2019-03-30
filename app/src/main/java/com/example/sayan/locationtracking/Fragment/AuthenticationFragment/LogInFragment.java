@@ -22,13 +22,10 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.sayan.locationtracking.Activity.MapNewActivity;
 import com.example.sayan.locationtracking.Authentication.EmailAuthenticate;
 import com.example.sayan.locationtracking.R;
 import com.example.sayan.locationtracking.ToastForInputValidation.CustomToast;
 import com.example.sayan.locationtracking.UtilityStringClass.Utils;
-import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -74,7 +71,7 @@ public class LogInFragment extends Fragment implements View.OnClickListener
                 .findViewById(R.id.show_hide_password);
         loginLayout = (LinearLayout) view.findViewById(R.id.login_layout);
 
-        emailAuthenticate = new EmailAuthenticate();
+        emailAuthenticate = new EmailAuthenticate(getActivity());
 
       //  loginButton.setEnabled(isEnabled); //at first button is disabled
 
@@ -201,7 +198,7 @@ public class LogInFragment extends Fragment implements View.OnClickListener
         else {
 
           //  loginButton.setEnabled(true);
-            new EmailAuthenticate().signInUser(getEmailId, getPassword);
+            new EmailAuthenticate(getActivity()).signInUser(getEmailId, getPassword);
 
         }
     }
