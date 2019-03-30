@@ -31,5 +31,3 @@ iii)  Content Provider
  ### Firebase Cloud Messaging---
  
     FCM is used to send topic notification to multiple users.
- 
-      
